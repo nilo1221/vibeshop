@@ -1,1 +1,38 @@
-[]
+[
+  {
+    "name": "Shopify E-commerce Platform",
+    "category": "Piattaforma",
+    "link": "https://shopify.pxf.io/c/7316518/3826698/13624",
+    "icon": "fa-store"
+  },
+  {
+    "name": "Crea il tuo negozio online",
+    "category": "E-commerce",
+    "link": "https://shopify.pxf.io/c/7316518/3826698/13624",
+    "icon": "fa-shopping-bag"
+  },
+  {
+    "name": "Strumenti di vendita Shopify",
+    "category": "Marketing",
+    "link": "https://shopify.pxf.io/c/7316518/3826698/13624",
+    "icon": "fa-chart-line"
+  },
+  {
+    "name": "Gestione inventario Shopify",
+    "category": "Gestione",
+    "link": "https://shopify.pxf.io/c/7316518/3826698/13624",
+    "icon": "fa-boxes"
+  },
+  {
+    "name": "Pagamenti sicuri Shopify",
+    "category": "Pagamenti",
+    "link": "https://shopify.pxf.io/c/7316518/3826698/13624",
+    "icon": "fa-credit-card"
+  },
+  {
+    "name": "Analisi e report Shopify",
+    "category": "Analytics",
+    "link": "https://shopify.pxf.io/c/7316518/3826698/13624",
+    "icon": "fa-analytics"
+  }
+]
