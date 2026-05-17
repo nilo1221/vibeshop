@@ -1,0 +1,39 @@
+/* Main Styles */
+:root {
+    --primary-color: #95BF47; /* Shopify Green */
+    --secondary-color: #f8f9fa;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--secondary-color);
+}
+
+.hero-section {
+    background: linear-gradient(135deg, #95BF47 0%, #7DB03D 50%, #6A9B35 100%);
+    color: white;
+    padding: 80px 0;
+    margin-bottom: 40px;
+}
+
+.feature-box {
+    padding: 30px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.feature-box:hover {
+    transform: translateY(-5px);
+}
+
+.btn-warning {
+    background-color: #95BF47;
+    border-color: #95BF47;
+}
+
+.btn-warning:hover {
+    background-color: #7DB03D;
+    border-color: #7DB03D;
+}
