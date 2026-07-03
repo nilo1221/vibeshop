@@ -141,8 +141,8 @@ export default function NichePage() {
             className="flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
           >
             <ArrowLeft className="w-5 h-5" />
-            <img src="/images/logo/shopify.jpeg" alt="SmartChoiceGuide Logo" className="w-6 h-6 rounded-lg" />
-            <span className="font-semibold">SmartChoiceGuide</span>
+            <img src="/images/logo/shopify.jpeg" alt="SmartChoiceNames Logo" className="w-6 h-6 rounded-lg" />
+            <span className="font-semibold">SmartChoiceNames</span>
           </button>
           <div className="flex gap-2">
             <button
@@ -296,7 +296,7 @@ export default function NichePage() {
       <footer className="border-t border-gray-200 dark:border-gray-700 mt-12 py-8 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm">
         <div className="max-w-6xl mx-auto px-4 text-center text-gray-600 dark:text-gray-400">
           <p className="mb-2">{t.ctaText}</p>
-          <p className="text-sm mb-4">© 2026 SmartChoiceGuide. All rights reserved.</p>
+          <p className="text-sm mb-4">© 2026 SmartChoiceNames. All rights reserved.</p>
           <p className="text-xs text-gray-500 dark:text-gray-500">
             {t.affiliateDisclosure}
           </p>

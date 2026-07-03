@@ -7,8 +7,8 @@ import GoogleAnalytics from '@/components/GoogleAnalytics'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'SmartChoiceGuide | Brand Name Generator for E-commerce',
-  description: 'Generate creative names for your e-commerce store with SmartChoiceGuide. Check domain availability and open your shop on Shopify.',
+  title: 'SmartChoiceNames | Brand Name Generator for E-commerce',
+  description: 'Generate creative names for your e-commerce store with SmartChoiceNames. Check domain availability and open your shop on Shopify.',
 }
 
 export default function RootLayout({
@@ -21,8 +21,8 @@ export default function RootLayout({
       <head>
         <SchemaMarkup
           type="WebApplication"
-          name="SmartChoiceGuide"
-          description="Generate creative names for your e-commerce store with SmartChoiceGuide. Check domain availability and open your shop on Shopify."
+          name="SmartChoiceNames"
+          description="Generate creative names for your e-commerce store with SmartChoiceNames. Check domain availability and open your shop on Shopify."
           url="https://vibeshop-chi.vercel.app"
         />
       </head>
