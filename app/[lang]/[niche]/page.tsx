@@ -6,7 +6,7 @@ import { getNicheById, getAllNiches } from '@/lib/niches';
 import { generateNames } from '@/lib/nameGenerator';
 import { generateShopifyAffiliateLink, generateDomainCheckLink } from '@/lib/affiliate';
 import { translations, Language } from '@/lib/i18n';
-import { Sparkles, Globe, ShoppingCart, Heart, RefreshCw, ArrowLeft } from 'lucide-react';
+import { Sparkles, Globe, ShoppingCart, Heart, RefreshCw, ArrowLeft, Share2, Copy, Check, Mail } from 'lucide-react';
 
 export default function NichePage() {
   const params = useParams();
@@ -17,6 +17,9 @@ export default function NichePage() {
   const [generatedNames, setGeneratedNames] = useState<any[]>([]);
   const [favorites, setFavorites] = useState<string[]>([]);
   const [isGenerating, setIsGenerating] = useState(false);
+  const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' } | null>(null);
+  const [copiedName, setCopiedName] = useState<string | null>(null);
+  const [email, setEmail] = useState<string>('');
 
   const niche = getNicheById(nicheId);
   const t = translations[lang];
@@ -49,6 +52,38 @@ export default function NichePage() {
       : [...favorites, name];
     setFavorites(newFavorites);
     localStorage.setItem('favorites', JSON.stringify(newFavorites));
+    showToast(favorites.includes(name) ? t.removedFromFavorites : t.addedToFavorites, 'success');
+  };
+
+  const showToast = (message: string, type: 'success' | 'error') => {
+    setToast({ message, type });
+    setTimeout(() => setToast(null), 3000);
+  };
+
+  const copyToClipboard = (name: string) => {
+    if (typeof window !== 'undefined') {
+      navigator.clipboard.writeText(name);
+      setCopiedName(name);
+      showToast(t.copiedToClipboard, 'success');
+      setTimeout(() => setCopiedName(null), 2000);
+    }
+  };
+
+  const shareOnSocial = (name: string, slogan: string) => {
+    const text = `Ho trovato un nome perfetto per il mio negozio: "${name}" - ${slogan}`;
+    const url = window.location.href;
+    
+    if (typeof window !== 'undefined') {
+      const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
+      window.open(twitterUrl, '_blank');
+    }
+  };
+
+  const handleEmailSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+    showToast(t.emailSubmitted, 'success');
+    setEmail('');
   };
 
   if (!niche) {
@@ -69,6 +104,15 @@ export default function NichePage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
+      {/* Toast Notification */}
+      {toast && (
+        <div className={`fixed top-4 right-4 px-6 py-3 rounded-lg shadow-lg z-50 ${
+          toast.type === 'success' ? 'bg-green-500' : 'bg-red-500'
+        } text-white font-medium animate-in slide-in-from-right fade-in duration-300`}>
+          {toast.message}
+        </div>
+      )}
+
       {/* Header */}
       <header className="border-b border-gray-200 dark:border-gray-700 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm">
         <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
@@ -132,16 +176,37 @@ export default function NichePage() {
                   <h3 className="text-xl font-bold text-gray-900 dark:text-white">
                     {item.name}
                   </h3>
-                  <button
-                    onClick={() => toggleFavorite(item.name)}
-                    className={`p-2 rounded-lg transition-colors ${
-                      favorites.includes(item.name)
-                        ? 'bg-red-100 text-red-600'
-                        : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 hover:bg-red-50 hover:text-red-600'
-                    }`}
-                  >
-                    <Heart className={`w-5 h-5 ${favorites.includes(item.name) ? 'fill-current' : ''}`} />
-                  </button>
+                  <div className="flex gap-2">
+                    <button
+                      onClick={() => copyToClipboard(item.name)}
+                      className={`p-2 rounded-lg transition-colors ${
+                        copiedName === item.name
+                          ? 'bg-green-100 text-green-600'
+                          : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-600'
+                      }`}
+                      title={t.copyName}
+                    >
+                      {copiedName === item.name ? <Check className="w-5 h-5" /> : <Copy className="w-5 h-5" />}
+                    </button>
+                    <button
+                      onClick={() => shareOnSocial(item.name, item.slogan)}
+                      className="p-2 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 hover:bg-blue-100 hover:text-blue-600 transition-colors"
+                      title={t.shareName}
+                    >
+                      <Share2 className="w-5 h-5" />
+                    </button>
+                    <button
+                      onClick={() => toggleFavorite(item.name)}
+                      className={`p-2 rounded-lg transition-colors ${
+                        favorites.includes(item.name)
+                          ? 'bg-red-100 text-red-600'
+                          : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 hover:bg-red-50 hover:text-red-600'
+                      }`}
+                      title={t.saveFavorite}
+                    >
+                      <Heart className={`w-5 h-5 ${favorites.includes(item.name) ? 'fill-current' : ''}`} />
+                    </button>
+                  </div>
                 </div>
                 <p className="text-gray-600 dark:text-gray-400 mb-4 italic">
                   "{item.slogan}"
@@ -168,6 +233,39 @@ export default function NichePage() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+
+        {/* Email Capture */}
+        <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl shadow-xl p-8 mb-8 text-white">
+          <div className="flex flex-col md:flex-row items-center gap-6">
+            <div className="flex-1">
+              <h3 className="text-2xl font-bold mb-2 flex items-center gap-2">
+                <Mail className="w-6 h-6" />
+                {t.emailCaptureTitle}
+              </h3>
+              <p className="text-blue-100">
+                {lang === 'it' ? 'Ricevi idee extra per il tuo brand direttamente nella tua casella di posta.' : 'Get extra brand ideas directly in your inbox.'}
+              </p>
+            </div>
+            <form onSubmit={handleEmailSubmit} className="flex-1 w-full max-w-md">
+              <div className="flex gap-2">
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder={t.emailCapturePlaceholder}
+                  className="flex-1 px-4 py-3 rounded-lg text-gray-900 focus:ring-2 focus:ring-white focus:outline-none"
+                  required
+                />
+                <button
+                  type="submit"
+                  className="px-6 py-3 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors"
+                >
+                  {t.emailCaptureButton}
+                </button>
+              </div>
+            </form>
           </div>
         </div>
 

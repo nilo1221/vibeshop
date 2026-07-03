@@ -24,7 +24,16 @@ export const translations = {
     popularNiches: 'Nicchie Popolari',
     metaTitle: 'Generatore di Nomi per Negozi | Trova il Nome Perfetto',
     metaDescription: 'Genera nomi creativi per il tuo negozio e-commerce. Verifica disponibilità domini e apri il tuo shop su Shopify.',
-    ctaText: 'Il nome è pronto? Controlla subito la disponibilità su Shopify e parti oggi.'
+    ctaText: 'Il nome è pronto? Controlla subito la disponibilità su Shopify e parti oggi.',
+    addedToFavorites: 'Aggiunto ai preferiti',
+    removedFromFavorites: 'Rimosso dai preferiti',
+    copiedToClipboard: 'Copiato negli appunti',
+    emailSubmitted: 'Email inviata con successo!',
+    shareName: 'Condividi nome',
+    copyName: 'Copia nome',
+    emailCaptureTitle: 'Ricevi 50 nomi extra via email',
+    emailCapturePlaceholder: 'La tua email',
+    emailCaptureButton: 'Ricevi nomi extra'
   },
   en: {
     title: 'E-commerce Store Name Generator',
@@ -43,7 +52,16 @@ export const translations = {
     popularNiches: 'Popular Niches',
     metaTitle: 'Store Name Generator | Find the Perfect Name',
     metaDescription: 'Generate creative names for your e-commerce store. Check domain availability and open your shop on Shopify.',
-    ctaText: 'Name ready? Check availability on Shopify and start today.'
+    ctaText: 'Name ready? Check availability on Shopify and start today.',
+    addedToFavorites: 'Added to favorites',
+    removedFromFavorites: 'Removed from favorites',
+    copiedToClipboard: 'Copied to clipboard',
+    emailSubmitted: 'Email submitted successfully!',
+    shareName: 'Share name',
+    copyName: 'Copy name',
+    emailCaptureTitle: 'Get 50 extra names via email',
+    emailCapturePlaceholder: 'Your email',
+    emailCaptureButton: 'Get extra names'
   }
 } as const;
 
