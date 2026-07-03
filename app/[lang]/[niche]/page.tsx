@@ -100,7 +100,7 @@ export default function NichePage() {
         {/* Hero Section */}
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-white">
-            {t.title} - {niche[lang as keyof typeof niche]}
+            {t.title} - {niche[lang as 'it' | 'en'] as string}
           </h1>
           <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
             {t.subtitle}
@@ -187,7 +187,7 @@ export default function NichePage() {
                     : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border-2 border-transparent hover:border-gray-300'
                 }`}
               >
-                {n[lang as keyof typeof n]}
+                {n[lang as 'it' | 'en'] as string}
               </button>
             ))}
           </div>

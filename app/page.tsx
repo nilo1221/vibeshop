@@ -104,7 +104,7 @@ export default function Home() {
                 <option value="">{t.selectNiche}</option>
                 {niches.map((niche) => (
                   <option key={niche.id} value={niche.id}>
-                    {niche[lang as keyof typeof niche]}
+                    {niche[lang as 'it' | 'en'] as string}
                   </option>
                 ))}
               </select>
@@ -146,7 +146,7 @@ export default function Home() {
                       : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border-2 border-transparent hover:border-gray-300'
                   }`}
                 >
-                  {niche[lang as keyof typeof niche]}
+                  {niche[lang as 'it' | 'en'] as string}
                 </button>
               ))}
             </div>
