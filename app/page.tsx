@@ -342,6 +342,63 @@ export default function Home() {
           </div>
         </div>
 
+        {/* Testimonials Section */}
+        <div className="mb-16 animate-fade-in" style={{ animationDelay: '1.6s' }}>
+          <h2 className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
+            What Entrepreneurs Say
+          </h2>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="glass p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all hover:scale-105">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-r from-[#96bf48] to-[#5E8E3E] flex items-center justify-center text-white font-bold text-xl">
+                  M
+                </div>
+                <div>
+                  <h4 className="font-bold text-gray-900 dark:text-white">Marco R.</h4>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">Fashion Store Owner</p>
+                </div>
+              </div>
+              <p className="text-gray-700 dark:text-gray-300 italic">
+                "SmartChoiceNames mi ha fatto risparmiare ore di brainstorming. Ho trovato il nome perfetto per il mio negozio di abbigliamento in 30 secondi!"
+              </p>
+              <div className="mt-4 flex text-[#96bf48]">⭐⭐⭐⭐⭐</div>
+            </div>
+
+            <div className="glass p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all hover:scale-105">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-r from-[#96bf48] to-[#5E8E3E] flex items-center justify-center text-white font-bold text-xl">
+                  S
+                </div>
+                <div>
+                  <h4 className="font-bold text-gray-900 dark:text-white">Sofia L.</h4>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">Beauty Brand Founder</p>
+                </div>
+              </div>
+              <p className="text-gray-700 dark:text-gray-300 italic">
+                "La preview del negozio mi ha convinta subito. Ho potuto visualizzare esattamente come sarebbe apparso il mio brand. Fantastico!"
+              </p>
+              <div className="mt-4 flex text-[#96bf48]">⭐⭐⭐⭐⭐</div>
+            </div>
+
+            <div className="glass p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all hover:scale-105">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-r from-[#96bf48] to-[#5E8E3E] flex items-center justify-center text-white font-bold text-xl">
+                  L
+                </div>
+                <div>
+                  <h4 className="font-bold text-gray-900 dark:text-white">Luca M.</h4>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">Tech Entrepreneur</p>
+                </div>
+              </div>
+              <p className="text-gray-700 dark:text-gray-300 italic">
+                "Gratuito e incredibilmente utile. I nomi generati sono davvero creativi e professionali. Ho lanciato il mio shop in una settimana!"
+              </p>
+              <div className="mt-4 flex text-[#96bf48]">⭐⭐⭐⭐⭐</div>
+            </div>
+          </div>
+        </div>
+
         {/* Generated Names */}
         {generatedNames.length > 0 && (
           <div className="mb-8">

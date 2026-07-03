@@ -132,6 +132,174 @@ export const niches: Record<string, NicheConfig> = {
         'Decorating is living'
       ]
     }
+  },
+  alimentari: {
+    id: 'alimentari',
+    it: 'alimentari',
+    en: 'food',
+    prefixes: ['Fresh', 'Organic', 'Pure', 'Natural', 'Green', 'Harvest', 'Farm', 'Garden', 'Taste', 'Flavor'],
+    suffixes: ['Market', 'Foods', 'Pantry', 'Kitchen', 'Table', 'Bowl', 'Plate', 'Cuisine', 'Deli', 'Bistro'],
+    middle: ['Food', 'Eat', 'Taste', 'Fresh', 'Organic', 'Natural', 'Healthy', 'Gourmet', 'Cuisine', 'Flavor'],
+    slogans: {
+      it: [
+        'Sapori autentici dal cuore',
+        'Cibo fresco, vita sana',
+        'Il gusto della natura',
+        'Qualità senza compromessi',
+        'Nutrire il corpo, nutrire l\'anima'
+      ],
+      en: [
+        'Authentic flavors from the heart',
+        'Fresh food, healthy life',
+        'The taste of nature',
+        'Quality without compromise',
+        'Nourish body, nourish soul'
+      ]
+    }
+  },
+  animali: {
+    id: 'animali',
+    it: 'animali',
+    en: 'pets',
+    prefixes: ['Paw', 'Tail', 'Furry', 'Happy', 'Loyal', 'Cute', 'Playful', 'Friendly', 'Loving', 'Care'],
+    suffixes: ['Paws', 'Tails', 'Pets', 'Care', 'Haven', 'Home', 'World', 'Life', 'Love', 'Buddy'],
+    middle: ['Pet', 'Paw', 'Tail', 'Furry', 'Animal', 'Friend', 'Companion', 'Loyal', 'Happy', 'Playful'],
+    slogans: {
+      it: [
+        'Amici a quattro zampe',
+        'Cura per i tuoi amici',
+        'Felicità animale',
+        'Amore senza parole',
+        'La tua famiglia pelosa'
+      ],
+      en: [
+        'Four-legged friends',
+        'Care for your friends',
+        'Animal happiness',
+        'Love without words',
+        'Your furry family'
+      ]
+    }
+  },
+  tecnologia: {
+    id: 'tecnologia',
+    it: 'tecnologia',
+    en: 'tech',
+    prefixes: ['Tech', 'Digital', 'Smart', 'Cyber', 'Nano', 'Quantum', 'Pixel', 'Logic', 'Core', 'Prime'],
+    suffixes: ['Hub', 'Zone', 'Labs', 'Depot', 'Central', 'Point', 'Base', 'Station', 'Port', 'Nexus'],
+    middle: ['Tech', 'Digital', 'Smart', 'Gadget', 'Device', 'Electro', 'Circuit', 'Byte', 'Data', 'Logic'],
+    slogans: {
+      it: [
+        'Il futuro a portata di mano',
+        'Tecnologia che cambia la vita',
+        'Innovazione in ogni dettaglio',
+        'Smart living, smart choice',
+        'La tecnologia è potere'
+      ],
+      en: [
+        'The future at your fingertips',
+        'Technology that changes lives',
+        'Innovation in every detail',
+        'Smart living, smart choice',
+        'Technology is power'
+      ]
+    }
+  },
+  salute: {
+    id: 'salute',
+    it: 'salute',
+    en: 'health',
+    prefixes: ['Vital', 'Pure', 'Well', 'Health', 'Life', 'Fit', 'Active', 'Balance', 'Zen', 'Care'],
+    suffixes: ['Life', 'Care', 'Health', 'Wellness', 'Balance', 'Fit', 'Zone', 'Hub', 'Center', 'Plus'],
+    middle: ['Health', 'Wellness', 'Fit', 'Vital', 'Pure', 'Life', 'Active', 'Balance', 'Care', 'Zen'],
+    slogans: {
+      it: [
+        'La tua salute, la tua priorità',
+        'Vivere meglio ogni giorno',
+        'Equilibrio mente e corpo',
+        'Benessere totale',
+        'Investi nella tua salute'
+      ],
+      en: [
+        'Your health, your priority',
+        'Live better every day',
+        'Balance mind and body',
+        'Total wellness',
+        'Invest in your health'
+      ]
+    }
+  },
+  viaggi: {
+    id: 'viaggi',
+    it: 'viaggi',
+    en: 'travel',
+    prefixes: ['Wander', 'Voyage', 'Journey', 'Travel', 'Explore', 'Adventure', 'Discovery', 'Quest', 'Roam', 'Trek'],
+    suffixes: ['Tours', 'Trips', 'Voyage', 'Journeys', 'Adventures', 'Explorer', 'Nomad', 'Wanderer', 'Traveler', 'Quest'],
+    middle: ['Travel', 'Journey', 'Adventure', 'Explore', 'Voyage', 'Discovery', 'Wander', 'Quest', 'Roam', 'Trek'],
+    slogans: {
+      it: [
+        'Il mondo ti aspetta',
+        'Avventure senza fine',
+        'Scopri nuovi orizzonti',
+        'Viaggiare è vivere',
+        'Ogni viaggio, una storia'
+      ],
+      en: [
+        'The world awaits you',
+        'Endless adventures',
+        'Discover new horizons',
+        'Traveling is living',
+        'Every journey, a story'
+      ]
+    }
+  },
+  arte: {
+    id: 'arte',
+    it: 'arte',
+    en: 'art',
+    prefixes: ['Art', 'Creative', 'Design', 'Studio', 'Gallery', 'Muse', 'Vision', 'Inspire', 'Create', 'Craft'],
+    suffixes: ['Studio', 'Gallery', 'Works', 'Craft', 'Design', 'Arts', 'Space', 'Hub', 'Lab', 'Atelier'],
+    middle: ['Art', 'Creative', 'Design', 'Studio', 'Gallery', 'Vision', 'Inspire', 'Create', 'Craft', 'Muse'],
+    slogans: {
+      it: [
+        'Arte che ispira',
+        'Creatività senza limiti',
+        'Esprimi te stesso',
+        'L\'arte è vita',
+        'Crea il tuo stile'
+      ],
+      en: [
+        'Art that inspires',
+        'Creativity without limits',
+        'Express yourself',
+        'Art is life',
+        'Create your style'
+      ]
+    }
+  },
+  musica: {
+    id: 'musica',
+    it: 'musica',
+    en: 'music',
+    prefixes: ['Sound', 'Beat', 'Rhythm', 'Melody', 'Harmony', 'Tune', 'Note', 'Chord', 'Groove', 'Vibe'],
+    suffixes: ['Studio', 'Sound', 'Music', 'Beats', 'Tunes', 'Records', 'Audio', 'Vibes', 'Groove', 'Jam'],
+    middle: ['Music', 'Sound', 'Beat', 'Rhythm', 'Melody', 'Harmony', 'Tune', 'Note', 'Chord', 'Groove'],
+    slogans: {
+      it: [
+        'La musica è l\'anima',
+        'Suona il tuo ritmo',
+        'Armonia in ogni nota',
+        'Vibrazioni positive',
+        'La colonna sonora della tua vita'
+      ],
+      en: [
+        'Music is the soul',
+        'Play your rhythm',
+        'Harmony in every note',
+        'Positive vibrations',
+        'The soundtrack of your life'
+      ]
+    }
   }
 };
 
