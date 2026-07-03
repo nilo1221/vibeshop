@@ -102,3 +102,95 @@ export const trackNicheSelection = (niche: string, lang: string) => {
     });
   }
 };
+
+// Track tone selection
+export const trackToneSelection = (tone: string | null, niche: string) => {
+  if (typeof window !== 'undefined' && window.gtag) {
+    window.gtag('event', 'tone_selection', {
+      event_category: 'engagement',
+      event_label: tone || 'none',
+      niche: niche,
+      value: 1
+    });
+  }
+};
+
+// Track store preview open
+export const trackPreviewOpen = (storeName: string, niche: string) => {
+  if (typeof window !== 'undefined' && window.gtag) {
+    window.gtag('event', 'preview_open', {
+      event_category: 'engagement',
+      event_label: niche,
+      store_name: storeName,
+      value: 1
+    });
+  }
+};
+
+// Track store preview close
+export const trackPreviewClose = (storeName: string, duration: number) => {
+  if (typeof window !== 'undefined' && window.gtag) {
+    window.gtag('event', 'preview_close', {
+      event_category: 'engagement',
+      event_label: storeName,
+      duration_seconds: duration,
+      value: 1
+    });
+  }
+};
+
+// Track scroll depth
+export const trackScrollDepth = (depth: '25' | '50' | '75' | '100') => {
+  if (typeof window !== 'undefined' && window.gtag) {
+    window.gtag('event', 'scroll_depth', {
+      event_category: 'engagement',
+      event_label: `${depth}%`,
+      value: parseInt(depth)
+    });
+  }
+};
+
+// Track time on page
+export const trackTimeOnPage = (seconds: number) => {
+  if (typeof window !== 'undefined' && window.gtag) {
+    window.gtag('event', 'time_on_page', {
+      event_category: 'engagement',
+      event_label: `${Math.floor(seconds / 60)}min`,
+      value: seconds
+    });
+  }
+};
+
+// Track carousel interaction
+export const trackCarouselInteraction = (action: 'next' | 'prev' | 'dot_click', testimonialIndex: number) => {
+  if (typeof window !== 'undefined' && window.gtag) {
+    window.gtag('event', 'carousel_interaction', {
+      event_category: 'engagement',
+      event_label: action,
+      testimonial_index: testimonialIndex,
+      value: 1
+    });
+  }
+};
+
+// Track exit intent popup
+export const trackExitIntent = (action: 'show' | 'close' | 'cta_click') => {
+  if (typeof window !== 'undefined' && window.gtag) {
+    window.gtag('event', 'exit_intent', {
+      event_category: 'conversion',
+      event_label: action,
+      value: 1
+    });
+  }
+};
+
+// Track feature usage
+export const trackFeatureUsage = (feature: 'tone_selector' | 'preview' | 'favorites' | 'copy') => {
+  if (typeof window !== 'undefined' && window.gtag) {
+    window.gtag('event', 'feature_usage', {
+      event_category: 'engagement',
+      event_label: feature,
+      value: 1
+    });
+  }
+};

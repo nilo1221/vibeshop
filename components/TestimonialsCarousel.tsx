@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Star } from 'lucide-react';
+import { trackCarouselInteraction } from '@/lib/analytics';
 
 interface Testimonial {
   name: string;
@@ -56,6 +57,7 @@ export default function TestimonialsCarousel() {
   const nextTestimonial = () => {
     if (isAnimating) return;
     setIsAnimating(true);
+    trackCarouselInteraction('next', currentIndex);
     setCurrentIndex((prev) => (prev + 1) % testimonials.length);
     setTimeout(() => setIsAnimating(false), 500);
   };
@@ -63,6 +65,7 @@ export default function TestimonialsCarousel() {
   const prevTestimonial = () => {
     if (isAnimating) return;
     setIsAnimating(true);
+    trackCarouselInteraction('prev', currentIndex);
     setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
     setTimeout(() => setIsAnimating(false), 500);
   };
@@ -131,6 +134,7 @@ export default function TestimonialsCarousel() {
                 onClick={() => {
                   if (isAnimating) return;
                   setIsAnimating(true);
+                  trackCarouselInteraction('dot_click', index);
                   setCurrentIndex(index);
                   setTimeout(() => setIsAnimating(false), 500);
                 }}

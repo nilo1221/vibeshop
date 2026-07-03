@@ -5,11 +5,12 @@ import { getAllNiches } from '@/lib/niches';
 import { generateNames } from '@/lib/nameGenerator';
 import { generateShopifyAffiliateLink, generateDomainCheckLink } from '@/lib/affiliate';
 import { translations, Language } from '@/lib/i18n';
-import { trackNameGeneration, trackCTAClick, trackFavoriteAction, trackCopyToClipboard, trackSocialShare, trackLanguageSwitch, trackNicheSelection, trackAffiliateClick } from '@/lib/analytics';
+import { trackNameGeneration, trackCTAClick, trackFavoriteAction, trackCopyToClipboard, trackSocialShare, trackLanguageSwitch, trackNicheSelection, trackAffiliateClick, trackToneSelection, trackPreviewOpen, trackPreviewClose, trackScrollDepth, trackTimeOnPage, trackFeatureUsage } from '@/lib/analytics';
 import { Sparkles, Globe, ShoppingCart, Heart, RefreshCw, Share2, Copy, Check, Eye } from 'lucide-react';
 import StorePreview from '@/components/StorePreview';
 import Particles from '@/components/Particles';
 import TestimonialsCarousel from '@/components/TestimonialsCarousel';
+import ExitIntentPopup from '@/components/ExitIntentPopup';
 import { Tone } from '@/lib/nameGenerator';
 
 export default function Home() {
@@ -22,6 +23,7 @@ export default function Home() {
   const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' } | null>(null);
   const [copiedName, setCopiedName] = useState<string | null>(null);
   const [previewStore, setPreviewStore] = useState<{ name: string; niche: string; slogan: string } | null>(null);
+  const [showExitIntent, setShowExitIntent] = useState(true);
 
   const niches = getAllNiches();
   const t = translations[lang];
@@ -38,8 +40,46 @@ export default function Home() {
     }
   }, []);
 
+  // Track scroll depth
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = (window.scrollY / scrollHeight) * 100;
+      
+      if (scrollPercent >= 25 && scrollPercent < 50) {
+        trackScrollDepth('25');
+      } else if (scrollPercent >= 50 && scrollPercent < 75) {
+        trackScrollDepth('50');
+      } else if (scrollPercent >= 75 && scrollPercent < 100) {
+        trackScrollDepth('75');
+      } else if (scrollPercent >= 100) {
+        trackScrollDepth('100');
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Track time on page
+  useEffect(() => {
+    const startTime = Date.now();
+    return () => {
+      const duration = Math.floor((Date.now() - startTime) / 1000);
+      if (duration > 0) {
+        trackTimeOnPage(duration);
+      }
+    };
+  }, []);
+
   const handleGenerate = () => {
     if (!selectedNiche) return;
+    
+    // Track tone selection
+    if (selectedTone) {
+      trackToneSelection(selectedTone, selectedNiche);
+      trackFeatureUsage('tone_selector');
+    }
     
     setIsGenerating(true);
     const niche = getAllNiches().find(n => n.id === selectedNiche);
@@ -83,6 +123,7 @@ export default function Home() {
         navigator.clipboard.writeText(name);
         setCopiedName(name);
         trackCopyToClipboard(name);
+        trackFeatureUsage('copy');
         showToast(t.copiedToClipboard || 'Copiato negli appunti', 'success');
         setTimeout(() => setCopiedName(null), 2000);
       } catch (error) {
@@ -226,7 +267,7 @@ export default function Home() {
         </div>
 
         {/* Input Section */}
-        <div className="glass p-10 rounded-3xl shadow-2xl mb-12 animate-fade-in" style={{ animationDelay: '1.2s' }}>
+        <div id="input-section" className="glass p-10 rounded-3xl shadow-2xl mb-12 animate-fade-in" style={{ animationDelay: '1.2s' }}>
           <div className="grid md:grid-cols-2 gap-8 mb-8">
             <div>
               <label className="block text-sm font-medium mb-3 text-gray-700 dark:text-gray-300">
@@ -486,7 +527,11 @@ export default function Home() {
                     </div>
                     <div className="flex gap-2">
                       <button
-                        onClick={() => setPreviewStore({ name: item.name, niche: item.niche, slogan: item.slogan })}
+                        onClick={() => {
+                          trackPreviewOpen(item.name, item.niche);
+                          trackFeatureUsage('preview');
+                          setPreviewStore({ name: item.name, niche: item.niche, slogan: item.slogan });
+                        }}
                         className="p-3 rounded-xl glass text-gray-600 dark:text-gray-400 hover:bg-purple-100 hover:text-purple-600 transition-all hover:scale-110"
                         title="Preview Store"
                       >
@@ -611,6 +656,14 @@ export default function Home() {
           niche={previewStore.niche}
           slogan={previewStore.slogan}
           onClose={() => setPreviewStore(null)}
+        />
+      )}
+
+      {/* Exit Intent Popup */}
+      {showExitIntent && (
+        <ExitIntentPopup
+          onClose={() => setShowExitIntent(false)}
+          lang={lang}
         />
       )}
     </div>
