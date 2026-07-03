@@ -12,6 +12,7 @@ import Particles from '@/components/Particles';
 import TestimonialsCarousel from '@/components/TestimonialsCarousel';
 import ExitIntentPopup from '@/components/ExitIntentPopup';
 import LogoGenerator from '@/components/LogoGenerator';
+import CookieConsent from '@/components/CookieConsent';
 import { Tone } from '@/lib/nameGenerator';
 
 export default function Home() {
@@ -31,7 +32,7 @@ export default function Home() {
   const niches = getAllNiches();
   const t = translations[lang];
 
-  // Load favorites from localStorage on mount
+  // Load favorites from localStorage on mount and detect browser language
   useEffect(() => {
     if (typeof window !== 'undefined') {
       try {
@@ -39,6 +40,12 @@ export default function Home() {
         if (saved) setFavorites(JSON.parse(saved));
       } catch (error) {
         console.error('Failed to load favorites from localStorage:', error);
+      }
+
+      // Auto-detect browser language if not set
+      const browserLang = navigator.language.split('-')[0];
+      if (browserLang === 'it' || browserLang === 'en') {
+        setLang(browserLang as Language);
       }
     }
   }, []);
@@ -208,12 +215,30 @@ export default function Home() {
                 SmartChoiceNames
               </h1>
             </div>
-            <p className="text-2xl text-gray-600 dark:text-gray-300 mb-10 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+            <p className="text-2xl text-gray-600 dark:text-gray-300 mb-6 animate-fade-in" style={{ animationDelay: '0.2s' }}>
               {t.subtitle}
             </p>
             
+            <p className="text-lg text-gray-500 dark:text-gray-400 mb-10 animate-fade-in max-w-2xl mx-auto" style={{ animationDelay: '0.3s' }}>
+              {lang === 'it' 
+                ? 'Genera 10 nomi creativi per il tuo negozio e-commerce in 30 secondi. Crea il logo perfetto e lancia il tuo business su Shopify oggi stesso.'
+                : 'Generate 10 creative names for your e-commerce store in 30 seconds. Create the perfect logo and launch your business on Shopify today.'
+              }
+            </p>
+            
+            {/* CTA Button */}
+            <div className="mb-10 animate-fade-in" style={{ animationDelay: '0.4s' }}>
+              <button
+                onClick={() => document.getElementById('input-section')?.scrollIntoView({ behavior: 'smooth' })}
+                className="px-8 py-4 bg-gradient-to-r from-[#96bf48] to-[#5E8E3E] hover:from-[#5E8E3E] hover:to-[#4a7a35] text-white font-bold text-lg rounded-2xl transition-all shadow-2xl hover:shadow-3xl hover:scale-105 animate-pulse-glow flex items-center gap-3 mx-auto"
+              >
+                <Sparkles className="w-6 h-6" />
+                {lang === 'it' ? 'Inizia Ora - È Gratuito' : 'Start Now - It\'s Free'}
+              </button>
+            </div>
+            
             {/* Trust Badges */}
-            <div className="flex flex-wrap justify-center gap-4 mb-10 animate-fade-in" style={{ animationDelay: '0.4s' }}>
+            <div className="flex flex-wrap justify-center gap-4 animate-fade-in" style={{ animationDelay: '0.5s' }}>
               <div className="flex items-center gap-2 glass px-5 py-3 rounded-full shadow-lg hover:shadow-xl transition-shadow">
                 <span className="text-2xl">🚀</span>
                 <span className="text-sm font-medium text-gray-700 dark:text-gray-300">10,000+ Names Generated</span>
@@ -509,10 +534,10 @@ export default function Home() {
               </h2>
               <button
                 onClick={handleGenerate}
-                className="text-[#96bf48] hover:text-[#5E8E3E] flex items-center gap-1 font-medium"
+                className="px-6 py-3 bg-gradient-to-r from-[#96bf48] to-[#5E8E3E] hover:from-[#5E8E3E] hover:to-[#4a7a35] text-white font-semibold rounded-xl transition-all hover:scale-105 flex items-center gap-2 shadow-lg"
               >
-                <RefreshCw className="w-4 h-4" />
-                {t.tryAnother}
+                <RefreshCw className="w-5 h-5" />
+                {t.regenerateNames}
               </button>
             </div>
             <div className="grid md:grid-cols-2 gap-8">
@@ -539,7 +564,7 @@ export default function Home() {
                           {item.niche}
                         </span>
                         <span>•</span>
-                        <span className="text-green-600 dark:text-green-400 font-medium">Available</span>
+                        <span className="text-blue-600 dark:text-blue-400 font-medium">Suggested</span>
                       </div>
                     </div>
                     <div className="flex gap-2">
@@ -697,20 +722,20 @@ export default function Home() {
       {/* Logo Generator Modal */}
       {logoName && (
         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fade-in">
-          <div className="bg-white dark:bg-gray-900 rounded-3xl max-w-4xl w-full p-8 shadow-2xl animate-scale-in relative max-h-[90vh] overflow-y-auto">
+          <div className="bg-white dark:bg-gray-900 rounded-3xl max-w-4xl w-full p-4 md:p-8 shadow-2xl animate-scale-in relative max-h-[90vh] overflow-y-auto">
             <button
               onClick={() => setLogoName(null)}
-              className="absolute top-4 right-4 p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-xl transition-all hover:scale-110"
+              className="absolute top-4 right-4 p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-xl transition-all hover:scale-110 z-10"
               aria-label="Close logo generator"
             >
               <X className="w-6 h-6 text-gray-600 dark:text-gray-400" />
             </button>
 
-            <div className="mb-6">
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+            <div className="mb-4 md:mb-6">
+              <h2 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-2">
                 Crea il tuo Logo
               </h2>
-              <p className="text-gray-600 dark:text-gray-400">
+              <p className="text-sm md:text-base text-gray-600 dark:text-gray-400">
                 Genera un logo professionale per <span className="font-semibold text-[#96bf48]">{logoName}</span>
               </p>
             </div>
@@ -719,6 +744,9 @@ export default function Home() {
           </div>
         </div>
       )}
+
+      {/* Cookie Consent Banner */}
+      <CookieConsent lang={lang} />
     </div>
   );
 }
