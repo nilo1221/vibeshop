@@ -269,6 +269,79 @@ export default function Home() {
           </div>
         </div>
 
+        {/* Win-Win Section */}
+        <div className="mb-16 animate-fade-in" style={{ animationDelay: '1.4s' }}>
+          <div className="glass p-12 rounded-3xl shadow-2xl">
+            <h2 className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
+              Everyone Wins
+            </h2>
+            
+            <div className="grid md:grid-cols-2 gap-12">
+              {/* What You Get */}
+              <div className="text-center">
+                <div className="text-6xl mb-6">🎁</div>
+                <h3 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white">What You Get</h3>
+                <ul className="space-y-4 text-left">
+                  <li className="flex items-start gap-3">
+                    <span className="text-[#96bf48] text-xl">✓</span>
+                    <span className="text-gray-700 dark:text-gray-300">Creative AI-generated store names</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-[#96bf48] text-xl">✓</span>
+                    <span className="text-gray-700 dark:text-gray-300">Visual store preview with products</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-[#96bf48] text-xl">✓</span>
+                    <span className="text-gray-700 dark:text-gray-300">Save hours of brainstorming</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-[#96bf48] text-xl">✓</span>
+                    <span className="text-gray-700 dark:text-gray-300">100% free - no hidden costs</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-[#96bf48] text-xl">✓</span>
+                    <span className="text-gray-700 dark:text-gray-300">Instant results in seconds</span>
+                  </li>
+                </ul>
+              </div>
+
+              {/* What We Get */}
+              <div className="text-center">
+                <div className="text-6xl mb-6">🤝</div>
+                <h3 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white">How We Help</h3>
+                <ul className="space-y-4 text-left">
+                  <li className="flex items-start gap-3">
+                    <span className="text-[#96bf48] text-xl">✓</span>
+                    <span className="text-gray-700 dark:text-gray-300">Small commission from Shopify when you sign up</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-[#96bf48] text-xl">✓</span>
+                    <span className="text-gray-700 dark:text-gray-300">This keeps our service 100% free for you</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-[#96bf48] text-xl">✓</span>
+                    <span className="text-gray-700 dark:text-gray-300">No extra cost to you - same Shopify price</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-[#96bf48] text-xl">✓</span>
+                    <span className="text-gray-700 dark:text-gray-300">Helps us improve and add more features</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-[#96bf48] text-xl">✓</span>
+                    <span className="text-gray-700 dark:text-gray-300">Transparent partnership with Shopify</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="mt-12 text-center">
+              <p className="text-lg text-gray-600 dark:text-gray-400 italic">
+                "A true partnership where everyone benefits - you get the perfect name, we keep the lights on."
+              </p>
+            </div>
+          </div>
+        </div>
+
         {/* Generated Names */}
         {generatedNames.length > 0 && (
           <div className="mb-8">
