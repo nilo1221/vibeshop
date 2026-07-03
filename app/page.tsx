@@ -249,7 +249,7 @@ export default function Home() {
       <footer className="border-t border-gray-200 dark:border-gray-700 mt-12 py-8 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm">
         <div className="max-w-6xl mx-auto px-4 text-center text-gray-600 dark:text-gray-400">
           <p className="mb-2">{t.ctaText}</p>
-          <p className="text-sm">© 2024 BrandNameCraft. All rights reserved.</p>
+          <p className="text-sm">© 2026 BrandNameCraft. All rights reserved.</p>
         </div>
       </footer>
     </div>
