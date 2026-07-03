@@ -1,7 +1,6 @@
 'use client';
 
-import { useState } from 'react';
-import Link from 'next/link';
+import { useState, useEffect } from 'react';
 import { getAllNiches } from '@/lib/niches';
 import { generateNames } from '@/lib/nameGenerator';
 import { generateShopifyAffiliateLink, generateDomainCheckLink } from '@/lib/affiliate';
@@ -20,6 +19,18 @@ export default function Home() {
   const niches = getAllNiches();
   const t = translations[lang];
 
+  // Load favorites from localStorage on mount
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      try {
+        const saved = localStorage.getItem('favorites');
+        if (saved) setFavorites(JSON.parse(saved));
+      } catch (error) {
+        console.error('Failed to load favorites from localStorage:', error);
+      }
+    }
+  }, []);
+
   const handleGenerate = () => {
     if (!selectedNiche) return;
     
@@ -35,54 +46,52 @@ export default function Home() {
   };
 
   const toggleFavorite = (name: string) => {
-    if (favorites.includes(name)) {
-      setFavorites(favorites.filter(f => f !== name));
-      showToast(t.removedFromFavorites || 'Rimosso dai preferiti', 'success');
-    } else {
-      setFavorites([...favorites, name]);
-      showToast(t.addedToFavorites || 'Aggiunto ai preferiti', 'success');
-    }
+    const newFavorites = favorites.includes(name)
+      ? favorites.filter(f => f !== name)
+      : [...favorites, name];
+    setFavorites(newFavorites);
+    showToast(favorites.includes(name) ? t.removedFromFavorites : t.addedToFavorites, 'success');
     // Save to localStorage
     if (typeof window !== 'undefined') {
-      localStorage.setItem('favorites', JSON.stringify(favorites.includes(name) ? favorites.filter(f => f !== name) : [...favorites, name]));
+      try {
+        localStorage.setItem('favorites', JSON.stringify(newFavorites));
+      } catch (error) {
+        console.error('Failed to save favorites to localStorage:', error);
+      }
     }
   };
 
   const showToast = (message: string, type: 'success' | 'error') => {
     setToast({ message, type });
-    setTimeout(() => setToast(null), 3000);
+    const timeoutId = setTimeout(() => setToast(null), 3000);
+    return () => clearTimeout(timeoutId);
   };
 
   const copyToClipboard = (name: string) => {
     if (typeof window !== 'undefined') {
-      navigator.clipboard.writeText(name);
-      setCopiedName(name);
-      showToast(t.copiedToClipboard || 'Copiato negli appunti', 'success');
-      setTimeout(() => setCopiedName(null), 2000);
+      try {
+        navigator.clipboard.writeText(name);
+        setCopiedName(name);
+        showToast(t.copiedToClipboard || 'Copiato negli appunti', 'success');
+        setTimeout(() => setCopiedName(null), 2000);
+      } catch (error) {
+        console.error('Failed to copy to clipboard:', error);
+        showToast('Failed to copy to clipboard', 'error');
+      }
     }
   };
 
   const shareOnSocial = (name: string, slogan: string) => {
-    const text = `Ho trovato un nome perfetto per il mio negozio: "${name}" - ${slogan}`;
+    const text = lang === 'it' 
+      ? `Ho trovato un nome perfetto per il mio negozio: "${name}" - ${slogan}`
+      : `I found a perfect name for my store: "${name}" - ${slogan}`;
     const url = window.location.href;
     
     if (typeof window !== 'undefined') {
       const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
-      const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}&quote=${encodeURIComponent(text)}`;
-      const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(text + ' ' + url)}`;
-      
-      // Open Twitter by default, could add a modal to choose platform
       window.open(twitterUrl, '_blank');
     }
   };
-
-  // Load favorites from localStorage on mount
-  if (typeof window !== 'undefined') {
-    useState(() => {
-      const saved = localStorage.getItem('favorites');
-      if (saved) setFavorites(JSON.parse(saved));
-    });
-  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
@@ -210,9 +219,9 @@ export default function Home() {
               </button>
             </div>
             <div className="grid md:grid-cols-2 gap-4">
-              {generatedNames.map((item, index) => (
+              {generatedNames.map((item) => (
                 <div
-                  key={index}
+                  key={item.name}
                   className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-shadow"
                 >
                   <div className="flex justify-between items-start mb-3">

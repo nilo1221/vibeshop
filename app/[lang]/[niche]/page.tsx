@@ -30,8 +30,14 @@ export default function NichePage() {
     }
     
     // Load favorites from localStorage
-    const saved = localStorage.getItem('favorites');
-    if (saved) setFavorites(JSON.parse(saved));
+    if (typeof window !== 'undefined') {
+      try {
+        const saved = localStorage.getItem('favorites');
+        if (saved) setFavorites(JSON.parse(saved));
+      } catch (error) {
+        console.error('Failed to load favorites from localStorage:', error);
+      }
+    }
   }, [niche, lang]);
 
   const handleRegenerate = () => {
@@ -50,26 +56,40 @@ export default function NichePage() {
       ? favorites.filter(f => f !== name)
       : [...favorites, name];
     setFavorites(newFavorites);
-    localStorage.setItem('favorites', JSON.stringify(newFavorites));
+    if (typeof window !== 'undefined') {
+      try {
+        localStorage.setItem('favorites', JSON.stringify(newFavorites));
+      } catch (error) {
+        console.error('Failed to save favorites to localStorage:', error);
+      }
+    }
     showToast(favorites.includes(name) ? t.removedFromFavorites : t.addedToFavorites, 'success');
   };
 
   const showToast = (message: string, type: 'success' | 'error') => {
     setToast({ message, type });
-    setTimeout(() => setToast(null), 3000);
+    const timeoutId = setTimeout(() => setToast(null), 3000);
+    return () => clearTimeout(timeoutId);
   };
 
   const copyToClipboard = (name: string) => {
     if (typeof window !== 'undefined') {
-      navigator.clipboard.writeText(name);
-      setCopiedName(name);
-      showToast(t.copiedToClipboard, 'success');
-      setTimeout(() => setCopiedName(null), 2000);
+      try {
+        navigator.clipboard.writeText(name);
+        setCopiedName(name);
+        showToast(t.copiedToClipboard, 'success');
+        setTimeout(() => setCopiedName(null), 2000);
+      } catch (error) {
+        console.error('Failed to copy to clipboard:', error);
+        showToast('Failed to copy to clipboard', 'error');
+      }
     }
   };
 
   const shareOnSocial = (name: string, slogan: string) => {
-    const text = `Ho trovato un nome perfetto per il mio negozio: "${name}" - ${slogan}`;
+    const text = lang === 'it' 
+      ? `Ho trovato un nome perfetto per il mio negozio: "${name}" - ${slogan}`
+      : `I found a perfect name for my store: "${name}" - ${slogan}`;
     const url = window.location.href;
     
     if (typeof window !== 'undefined') {
@@ -160,9 +180,9 @@ export default function NichePage() {
             </button>
           </div>
           <div className="grid md:grid-cols-2 gap-4">
-            {generatedNames.map((item, index) => (
+            {generatedNames.map((item) => (
               <div
-                key={index}
+                key={item.name}
                 className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-shadow"
               >
                 <div className="flex justify-between items-start mb-3">
