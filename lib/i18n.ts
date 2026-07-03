@@ -28,12 +28,8 @@ export const translations = {
     addedToFavorites: 'Aggiunto ai preferiti',
     removedFromFavorites: 'Rimosso dai preferiti',
     copiedToClipboard: 'Copiato negli appunti',
-    emailSubmitted: 'Email inviata con successo!',
     shareName: 'Condividi nome',
-    copyName: 'Copia nome',
-    emailCaptureTitle: 'Ricevi 50 nomi extra via email',
-    emailCapturePlaceholder: 'La tua email',
-    emailCaptureButton: 'Ricevi nomi extra'
+    copyName: 'Copia nome'
   },
   en: {
     title: 'E-commerce Store Name Generator',
@@ -56,12 +52,8 @@ export const translations = {
     addedToFavorites: 'Added to favorites',
     removedFromFavorites: 'Removed from favorites',
     copiedToClipboard: 'Copied to clipboard',
-    emailSubmitted: 'Email submitted successfully!',
     shareName: 'Share name',
-    copyName: 'Copy name',
-    emailCaptureTitle: 'Get 50 extra names via email',
-    emailCapturePlaceholder: 'Your email',
-    emailCaptureButton: 'Get extra names'
+    copyName: 'Copy name'
   }
 } as const;
 

@@ -6,7 +6,7 @@ import { getAllNiches } from '@/lib/niches';
 import { generateNames } from '@/lib/nameGenerator';
 import { generateShopifyAffiliateLink, generateDomainCheckLink } from '@/lib/affiliate';
 import { translations, Language } from '@/lib/i18n';
-import { Sparkles, Globe, ShoppingCart, Heart, RefreshCw, Share2, Copy, Check, Mail } from 'lucide-react';
+import { Sparkles, Globe, ShoppingCart, Heart, RefreshCw, Share2, Copy, Check } from 'lucide-react';
 
 export default function Home() {
   const [lang, setLang] = useState<Language>('it');
@@ -16,7 +16,6 @@ export default function Home() {
   const [isGenerating, setIsGenerating] = useState(false);
   const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' } | null>(null);
   const [copiedName, setCopiedName] = useState<string | null>(null);
-  const [email, setEmail] = useState<string>('');
 
   const niches = getAllNiches();
   const t = translations[lang];
@@ -75,15 +74,6 @@ export default function Home() {
       // Open Twitter by default, could add a modal to choose platform
       window.open(twitterUrl, '_blank');
     }
-  };
-
-  const handleEmailSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email) return;
-    
-    // Here you would integrate with an email service like Mailchimp, ConvertKit, etc.
-    showToast(t.emailSubmitted || 'Email inviata con successo!', 'success');
-    setEmail('');
   };
 
   // Load favorites from localStorage on mount
@@ -289,39 +279,6 @@ export default function Home() {
             </div>
           </div>
         )}
-
-        {/* Email Capture */}
-        <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl shadow-xl p-8 mb-8 text-white">
-          <div className="flex flex-col md:flex-row items-center gap-6">
-            <div className="flex-1">
-              <h3 className="text-2xl font-bold mb-2 flex items-center gap-2">
-                <Mail className="w-6 h-6" />
-                {t.emailCaptureTitle}
-              </h3>
-              <p className="text-blue-100">
-                {lang === 'it' ? 'Ricevi idee extra per il tuo brand direttamente nella tua casella di posta.' : 'Get extra brand ideas directly in your inbox.'}
-              </p>
-            </div>
-            <form onSubmit={handleEmailSubmit} className="flex-1 w-full max-w-md">
-              <div className="flex gap-2">
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder={t.emailCapturePlaceholder}
-                  className="flex-1 px-4 py-3 rounded-lg text-gray-900 focus:ring-2 focus:ring-white focus:outline-none"
-                  required
-                />
-                <button
-                  type="submit"
-                  className="px-6 py-3 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors"
-                >
-                  {t.emailCaptureButton}
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
 
         {/* Favorites */}
         {favorites.length > 0 && (
