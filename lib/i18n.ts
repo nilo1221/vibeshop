@@ -29,7 +29,8 @@ export const translations = {
     removedFromFavorites: 'Rimosso dai preferiti',
     copiedToClipboard: 'Copiato negli appunti',
     shareName: 'Condividi nome',
-    copyName: 'Copia nome'
+    copyName: 'Copia nome',
+    affiliateDisclosure: 'Posso guadagnare una commissione quando ti registri a Shopify tramite il mio link.'
   },
   en: {
     title: 'E-commerce Store Name Generator',
@@ -53,7 +54,8 @@ export const translations = {
     removedFromFavorites: 'Removed from favorites',
     copiedToClipboard: 'Copied to clipboard',
     shareName: 'Share name',
-    copyName: 'Copy name'
+    copyName: 'Copy name',
+    affiliateDisclosure: 'I may earn a commission when you sign up for Shopify through my link.'
   }
 } as const;
 

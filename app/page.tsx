@@ -274,7 +274,7 @@ export default function Home() {
                       {t.checkDomain}
                     </a>
                     <a
-                      href={generateShopifyAffiliateLink(item.name, item.niche, lang)}
+                      href={generateShopifyAffiliateLink(item.name, item.niche, lang, 'home')}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex-1 px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg text-sm font-medium transition-colors flex items-center justify-center gap-2"
@@ -320,7 +320,10 @@ export default function Home() {
       <footer className="border-t border-gray-200 dark:border-gray-700 mt-12 py-8 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm">
         <div className="max-w-6xl mx-auto px-4 text-center text-gray-600 dark:text-gray-400">
           <p className="mb-2">{t.ctaText}</p>
-          <p className="text-sm">© 2026 BrandNameCraft. All rights reserved.</p>
+          <p className="text-sm mb-4">© 2026 BrandNameCraft. All rights reserved.</p>
+          <p className="text-xs text-gray-500 dark:text-gray-500">
+            {t.affiliateDisclosure}
+          </p>
         </div>
       </footer>
     </div>
