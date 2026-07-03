@@ -121,6 +121,7 @@ export default function NichePage() {
             className="flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
           >
             <ArrowLeft className="w-5 h-5" />
+            <img src="/images/logo/shopify.jpeg" alt="BrandNameCraft Logo" className="w-6 h-6 rounded-lg" />
             <span className="font-semibold">BrandNameCraft</span>
           </button>
           <div className="flex gap-2">

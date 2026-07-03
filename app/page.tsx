@@ -109,7 +109,7 @@ export default function Home() {
       <header className="border-b border-gray-200 dark:border-gray-700 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm">
         <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center gap-2">
-            <Sparkles className="w-6 h-6 text-blue-600" />
+            <img src="/images/logo/shopify.jpeg" alt="BrandNameCraft Logo" className="w-8 h-8 rounded-lg" />
             <span className="font-semibold text-lg">BrandNameCraft</span>
           </div>
           <div className="flex gap-2">
