@@ -4,7 +4,7 @@ export const generateShopifyAffiliateLink = (
   niche: string,
   lang: 'it' | 'en'
 ): string => {
-  const affiliateLink = process.env.NEXT_PUBLIC_SHOPIFY_AFFILIATE_LINK || 'https://shopify.pxf.io/7316518-link';
+  const affiliateLink = process.env.NEXT_PUBLIC_SHOPIFY_AFFILIATE_LINK || 'https://shopify.pxf.io/c/7316518/3931322/13624';
   
   // Build the URL with tracking parameters
   const params = new URLSearchParams({
