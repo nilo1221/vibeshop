@@ -276,6 +276,50 @@ export const logoIcons: LogoIcon[] = [
     category: 'sports',
     svg: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6.5 6.5 11 11"/><path d="m21 21-1-1"/><path d="m3 3 1 1"/><path d="m18 22 4-4"/><path d="m2 6 4-4"/><path d="m3 10 7-7"/><path d="m14 21 7-7"/></svg>`
   },
+
+  // Hairdresser & Barber
+  {
+    id: 'scissors-hair',
+    name: 'Hair Scissors',
+    category: 'hairdresser',
+    svg: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>`
+  },
+  {
+    id: 'comb',
+    name: 'Comb',
+    category: 'hairdresser',
+    svg: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h16"/><path d="M4 22v-4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v4"/><path d="M4 18V4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14"/><path d="M8 4v14"/><path d="M12 4v14"/><path d="M16 4v14"/></svg>`
+  },
+  {
+    id: 'mirror',
+    name: 'Mirror',
+    category: 'hairdresser',
+    svg: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2v20"/><path d="M2 12h20"/><path d="M4.93 4.93l14.14 14.14"/><path d="M19.07 4.93L4.93 19.07"/></svg>`
+  },
+  {
+    id: 'barber-chair',
+    name: 'Barber Chair',
+    category: 'hairdresser',
+    svg: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="3" width="12" height="10" rx="2"/><path d="M6 13v6"/><path d="M18 13v6"/><path d="M8 19h8"/><path d="M12 3v10"/></svg>`
+  },
+  {
+    id: 'razor',
+    name: 'Razor',
+    category: 'hairdresser',
+    svg: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 21a4 4 0 0 1-4-4V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v12a4 4 0 0 1-4 4Z"/><path d="M15 21a4 4 0 0 0 4-4V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v12a4 4 0 0 0 4 4Z"/><line x1="12" y1="3" x2="12" y2="21"/></svg>`
+  },
+  {
+    id: 'hair-dryer',
+    name: 'Hair Dryer',
+    category: 'hairdresser',
+    svg: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="M12 2a8 8 0 0 1 8 8v4a8 8 0 0 1-8 8"/><path d="M4 10h8"/><path d="M4 14h8"/><path d="M12 6a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2"/></svg>`
+  },
+  {
+    id: 'spray-bottle',
+    name: 'Spray Bottle',
+    category: 'hairdresser',
+    svg: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2h6"/><path d="M12 2v4"/><path d="M8 6h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></svg>`
+  },
   {
     id: 'bicycle',
     name: 'Bicycle',

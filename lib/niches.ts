@@ -344,6 +344,52 @@ export const niches: Record<string, NicheConfig> = {
         'The soundtrack of your life'
       ]
     }
+  },
+  parrucchieri: {
+    id: 'parrucchieri',
+    it: 'parrucchieri',
+    en: 'hairdressers',
+    prefixes: ['Style', 'Cut', 'Hair', 'Mane', 'Fade', 'Trim', 'Shear', 'Clip', 'Groom', 'Chop'],
+    suffixes: ['Studio', 'Salon', 'Barber', 'Cuts', 'Style', 'Lab', 'Co', 'House', 'Lounge', 'Hub'],
+    middle: ['Hair', 'Style', 'Cut', 'Fade', 'Groom', 'Trim', 'Shear', 'Clip', 'Mane', 'Chop'],
+    slogans: {
+      it: [
+        'Il tuo stile, la nostra passione',
+        'Tagli che fanno la differenza',
+        'Bellezza in ogni dettaglio',
+        'Il look perfetto per te',
+        'Esperti del tuo stile'
+      ],
+      en: [
+        'Your style, our passion',
+        'Cuts that make a difference',
+        'Beauty in every detail',
+        'The perfect look for you',
+        'Experts in your style'
+      ]
+    },
+    tone: {
+      luxury: {
+        prefixes: ['Royal', 'Elite', 'Prestige', 'Grand', 'Imperial', 'Noble', 'Regal', 'Opulent', 'Majestic', 'Supreme'],
+        suffixes: ['Maison', 'Atelier', 'Salon', 'Couture', 'Legacy', 'Heritage', 'Estates', 'Manor', 'Palace', 'Reserve'],
+        middle: ['Haute', 'Couture', 'Bespoke', 'Tailored', 'Artisan', 'Crafted', 'Signature', 'Exclusive', 'Premium', 'Select']
+      },
+      playful: {
+        prefixes: ['Fun', 'Jolly', 'Happy', 'Zesty', 'Bubbly', 'Peppy', 'Cheer', 'Sunny', 'Bright', 'Spark'],
+        suffixes: ['Pop', 'Vibe', 'Glow', 'Spark', 'Buzz', 'Jam', 'Beat', 'Joy', 'Play', 'Zone'],
+        middle: ['Happy', 'Fun', 'Play', 'Joy', 'Smile', 'Cheer', 'Bright', 'Sunny', 'Zest', 'Vibe']
+      },
+      professional: {
+        prefixes: ['Prime', 'Apex', 'Summit', 'Pinnacle', 'Vertex', 'Zenith', 'Acme', 'Crown', 'Peak', 'Elite'],
+        suffixes: ['Group', 'Partners', 'Associates', 'Solutions', 'Systems', 'Dynamics', 'Ventures', 'Enterprise', 'Capital', 'Holdings'],
+        middle: ['Pro', 'Expert', 'Master', 'Prime', 'Elite', 'Pro', 'Smart', 'Sharp', 'Wise', 'Strategic']
+      },
+      casual: {
+        prefixes: ['Cozy', 'Chill', 'Easy', 'Relax', 'Zen', 'Calm', 'Mellow', 'Soft', 'Gentle', 'Peace'],
+        suffixes: ['Corner', 'Spot', 'Place', 'Nook', 'Den', 'Lounge', 'Haven', 'Retreat', 'Hideaway', 'Sanctuary'],
+        middle: ['Easy', 'Chill', 'Relax', 'Zen', 'Calm', 'Peace', 'Soft', 'Gentle', 'Mellow', 'Cozy']
+      }
+    }
   }
 };
 
