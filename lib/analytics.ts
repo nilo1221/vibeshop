@@ -185,7 +185,7 @@ export const trackExitIntent = (action: 'show' | 'close' | 'cta_click') => {
 };
 
 // Track feature usage
-export const trackFeatureUsage = (feature: 'tone_selector' | 'preview' | 'favorites' | 'copy') => {
+export const trackFeatureUsage = (feature: 'tone_selector' | 'preview' | 'favorites' | 'copy' | 'logo') => {
   if (typeof window !== 'undefined' && window.gtag) {
     window.gtag('event', 'feature_usage', {
       event_category: 'engagement',

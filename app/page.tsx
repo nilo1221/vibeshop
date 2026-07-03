@@ -6,11 +6,12 @@ import { generateNames } from '@/lib/nameGenerator';
 import { generateShopifyAffiliateLink, generateDomainCheckLink } from '@/lib/affiliate';
 import { translations, Language } from '@/lib/i18n';
 import { trackNameGeneration, trackCTAClick, trackFavoriteAction, trackCopyToClipboard, trackSocialShare, trackLanguageSwitch, trackNicheSelection, trackAffiliateClick, trackToneSelection, trackPreviewOpen, trackPreviewClose, trackScrollDepth, trackTimeOnPage, trackFeatureUsage } from '@/lib/analytics';
-import { Sparkles, Globe, ShoppingCart, Heart, RefreshCw, Share2, Copy, Check, Eye } from 'lucide-react';
+import { Sparkles, Globe, ShoppingCart, Heart, RefreshCw, Share2, Copy, Check, Eye, Palette, X } from 'lucide-react';
 import StorePreview from '@/components/StorePreview';
 import Particles from '@/components/Particles';
 import TestimonialsCarousel from '@/components/TestimonialsCarousel';
 import ExitIntentPopup from '@/components/ExitIntentPopup';
+import LogoGenerator from '@/components/LogoGenerator';
 import { Tone } from '@/lib/nameGenerator';
 
 export default function Home() {
@@ -24,6 +25,8 @@ export default function Home() {
   const [copiedName, setCopiedName] = useState<string | null>(null);
   const [previewStore, setPreviewStore] = useState<{ name: string; niche: string; slogan: string } | null>(null);
   const [showExitIntent, setShowExitIntent] = useState(true);
+  const [businessDescription, setBusinessDescription] = useState('');
+  const [logoName, setLogoName] = useState<string | null>(null);
 
   const niches = getAllNiches();
   const t = translations[lang];
@@ -304,6 +307,20 @@ export default function Home() {
             </div>
           </div>
 
+          {/* Business Description */}
+          <div className="mb-8">
+            <label className="block text-sm font-medium mb-3 text-gray-700 dark:text-gray-300">
+              {t.businessDescriptionLabel}
+            </label>
+            <textarea
+              value={businessDescription}
+              onChange={(e) => setBusinessDescription(e.target.value)}
+              placeholder={t.businessDescriptionPlaceholder}
+              rows={3}
+              className="w-full px-5 py-4 rounded-xl border-2 border-gray-300 dark:border-gray-600 bg-white/80 dark:bg-gray-800/80 text-gray-900 dark:text-white focus:ring-2 focus:ring-[#96bf48] focus:border-transparent transition-all hover:border-[#96bf48]/50 resize-none"
+            />
+          </div>
+
           <div className="flex items-end">
             <button
               onClick={handleGenerate}
@@ -538,6 +555,16 @@ export default function Home() {
                         <Eye className="w-5 h-5" />
                       </button>
                       <button
+                        onClick={() => {
+                          setLogoName(item.name);
+                          trackFeatureUsage('logo');
+                        }}
+                        className="p-3 rounded-xl glass text-gray-600 dark:text-gray-400 hover:bg-orange-100 hover:text-orange-600 transition-all hover:scale-110"
+                        title="Create Logo"
+                      >
+                        <Palette className="w-5 h-5" />
+                      </button>
+                      <button
                         onClick={() => copyToClipboard(item.name)}
                         className={`p-3 rounded-xl transition-all hover:scale-110 ${
                           copiedName === item.name
@@ -665,6 +692,32 @@ export default function Home() {
           onClose={() => setShowExitIntent(false)}
           lang={lang}
         />
+      )}
+
+      {/* Logo Generator Modal */}
+      {logoName && (
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fade-in">
+          <div className="bg-white dark:bg-gray-900 rounded-3xl max-w-4xl w-full p-8 shadow-2xl animate-scale-in relative max-h-[90vh] overflow-y-auto">
+            <button
+              onClick={() => setLogoName(null)}
+              className="absolute top-4 right-4 p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-xl transition-all hover:scale-110"
+              aria-label="Close logo generator"
+            >
+              <X className="w-6 h-6 text-gray-600 dark:text-gray-400" />
+            </button>
+
+            <div className="mb-6">
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                Crea il tuo Logo
+              </h2>
+              <p className="text-gray-600 dark:text-gray-400">
+                Genera un logo professionale per <span className="font-semibold text-[#96bf48]">{logoName}</span>
+              </p>
+            </div>
+
+            <LogoGenerator storeName={logoName} />
+          </div>
+        </div>
       )}
     </div>
   );
