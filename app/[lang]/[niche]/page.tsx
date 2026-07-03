@@ -6,6 +6,7 @@ import { getNicheById, getAllNiches } from '@/lib/niches';
 import { generateNames } from '@/lib/nameGenerator';
 import { generateShopifyAffiliateLink, generateDomainCheckLink } from '@/lib/affiliate';
 import { translations, Language } from '@/lib/i18n';
+import { trackNameGeneration, trackCTAClick, trackFavoriteAction, trackCopyToClipboard, trackSocialShare, trackAffiliateClick } from '@/lib/analytics';
 import { Sparkles, Globe, ShoppingCart, Heart, RefreshCw, ArrowLeft, Share2, Copy, Check } from 'lucide-react';
 
 export default function NichePage() {
@@ -48,6 +49,7 @@ export default function NichePage() {
       const names = generateNames(niche, lang, 10);
       setGeneratedNames(names);
       setIsGenerating(false);
+      trackNameGeneration(niche.id, lang, names.length);
     }, 500);
   };
 
@@ -56,6 +58,8 @@ export default function NichePage() {
       ? favorites.filter(f => f !== name)
       : [...favorites, name];
     setFavorites(newFavorites);
+    const action = favorites.includes(name) ? 'remove' : 'add';
+    trackFavoriteAction(action, name);
     if (typeof window !== 'undefined') {
       try {
         localStorage.setItem('favorites', JSON.stringify(newFavorites));
@@ -77,6 +81,7 @@ export default function NichePage() {
       try {
         navigator.clipboard.writeText(name);
         setCopiedName(name);
+        trackCopyToClipboard(name);
         showToast(t.copiedToClipboard, 'success');
         setTimeout(() => setCopiedName(null), 2000);
       } catch (error) {
@@ -94,6 +99,7 @@ export default function NichePage() {
     
     if (typeof window !== 'undefined') {
       const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
+      trackSocialShare('twitter', name);
       window.open(twitterUrl, '_blank');
     }
   };
@@ -229,6 +235,7 @@ export default function NichePage() {
                     href={generateDomainCheckLink(item.name.toLowerCase() + '.com')}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => trackCTAClick('domain', item.name)}
                     className="flex-1 px-4 py-2 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 rounded-lg text-sm font-medium transition-colors flex items-center justify-center gap-2"
                   >
                     <Globe className="w-4 h-4" />
@@ -238,6 +245,10 @@ export default function NichePage() {
                     href={generateShopifyAffiliateLink(item.name, item.niche, lang, 'niche')}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => {
+                      trackCTAClick('shopify', item.name);
+                      trackAffiliateClick(item.name, item.niche, lang, 'niche');
+                    }}
                     className="flex-1 px-4 py-2 bg-[#96bf48] hover:bg-[#5E8E3E] text-white rounded-lg text-sm font-medium transition-colors flex items-center justify-center gap-2"
                   >
                     <ShoppingCart className="w-4 h-4" />
