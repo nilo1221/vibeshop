@@ -10,6 +10,28 @@ export interface NicheConfig {
     it: string[];
     en: string[];
   };
+  tone?: {
+    luxury?: {
+      prefixes: string[];
+      suffixes: string[];
+      middle: string[];
+    };
+    playful?: {
+      prefixes: string[];
+      suffixes: string[];
+      middle: string[];
+    };
+    professional?: {
+      prefixes: string[];
+      suffixes: string[];
+      middle: string[];
+    };
+    casual?: {
+      prefixes: string[];
+      suffixes: string[];
+      middle: string[];
+    };
+  };
 }
 
 export const niches: Record<string, NicheConfig> = {
@@ -35,6 +57,28 @@ export const niches: Record<string, NicheConfig> = {
         'Style without compromise',
         'Fashion is an attitude'
       ]
+    },
+    tone: {
+      luxury: {
+        prefixes: ['Royal', 'Elite', 'Prestige', 'Grand', 'Imperial', 'Noble', 'Regal', 'Opulent', 'Majestic', 'Supreme'],
+        suffixes: ['Maison', 'Atelier', 'Collection', 'Couture', 'Legacy', 'Heritage', 'Estates', 'Manor', 'Palace', 'Reserve'],
+        middle: ['Haute', 'Couture', 'Bespoke', 'Tailored', 'Artisan', 'Crafted', 'Signature', 'Exclusive', 'Premium', 'Select']
+      },
+      playful: {
+        prefixes: ['Fun', 'Jolly', 'Happy', 'Zesty', 'Bubbly', 'Peppy', 'Cheer', 'Sunny', 'Bright', 'Spark'],
+        suffixes: ['Pop', 'Vibe', 'Glow', 'Spark', 'Buzz', 'Jam', 'Beat', 'Joy', 'Play', 'Zone'],
+        middle: ['Happy', 'Fun', 'Play', 'Joy', 'Smile', 'Cheer', 'Bright', 'Sunny', 'Zest', 'Vibe']
+      },
+      professional: {
+        prefixes: ['Prime', 'Apex', 'Summit', 'Pinnacle', 'Vertex', 'Zenith', 'Acme', 'Crown', 'Peak', 'Elite'],
+        suffixes: ['Group', 'Partners', 'Associates', 'Solutions', 'Systems', 'Dynamics', 'Ventures', 'Enterprise', 'Capital', 'Holdings'],
+        middle: ['Pro', 'Expert', 'Master', 'Prime', 'Elite', 'Pro', 'Smart', 'Sharp', 'Wise', 'Strategic']
+      },
+      casual: {
+        prefixes: ['Cozy', 'Chill', 'Easy', 'Relax', 'Zen', 'Calm', 'Mellow', 'Soft', 'Gentle', 'Peace'],
+        suffixes: ['Corner', 'Spot', 'Place', 'Nook', 'Den', 'Lounge', 'Haven', 'Retreat', 'Hideaway', 'Sanctuary'],
+        middle: ['Easy', 'Chill', 'Relax', 'Zen', 'Calm', 'Peace', 'Soft', 'Gentle', 'Mellow', 'Cozy']
+      }
     }
   },
   cosmetici: {

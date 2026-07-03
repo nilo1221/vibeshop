@@ -9,10 +9,12 @@ import { trackNameGeneration, trackCTAClick, trackFavoriteAction, trackCopyToCli
 import { Sparkles, Globe, ShoppingCart, Heart, RefreshCw, Share2, Copy, Check, Eye } from 'lucide-react';
 import StorePreview from '@/components/StorePreview';
 import Particles from '@/components/Particles';
+import { Tone } from '@/lib/nameGenerator';
 
 export default function Home() {
   const [lang, setLang] = useState<Language>('it');
   const [selectedNiche, setSelectedNiche] = useState<string>('');
+  const [selectedTone, setSelectedTone] = useState<Tone>(null);
   const [generatedNames, setGeneratedNames] = useState<any[]>([]);
   const [favorites, setFavorites] = useState<string[]>([]);
   const [isGenerating, setIsGenerating] = useState(false);
@@ -42,7 +44,7 @@ export default function Home() {
     const niche = getAllNiches().find(n => n.id === selectedNiche);
     if (niche) {
       setTimeout(() => {
-        const names = generateNames(niche, lang, 10);
+        const names = generateNames(niche, lang, 10, selectedTone);
         setGeneratedNames(names);
         setIsGenerating(false);
         trackNameGeneration(niche.id, lang, names.length);
@@ -242,29 +244,46 @@ export default function Home() {
                 ))}
               </select>
             </div>
-            <div className="flex items-end">
-              <button
-                onClick={handleGenerate}
-                disabled={!selectedNiche || isGenerating}
-                className="w-full px-8 py-4 bg-gradient-to-r from-[#96bf48] to-[#5E8E3E] hover:from-[#5E8E3E] hover:to-[#4a7a35] disabled:bg-gray-400 text-white font-semibold rounded-xl transition-all shadow-lg hover:shadow-2xl hover:scale-105 flex items-center justify-center gap-3 animate-pulse-glow"
+            <div>
+              <label className="block text-sm font-medium mb-3 text-gray-700 dark:text-gray-300">
+                Tone / Style (Optional)
+              </label>
+              <select
+                value={selectedTone || ''}
+                onChange={(e) => setSelectedTone(e.target.value as Tone)}
+                className="w-full px-5 py-4 rounded-xl border-2 border-gray-300 dark:border-gray-600 bg-white/80 dark:bg-gray-800/80 text-gray-900 dark:text-white focus:ring-2 focus:ring-[#96bf48] focus:border-transparent transition-all hover:border-[#96bf48]/50"
               >
-                {isGenerating ? (
-                  <>
-                    <RefreshCw className="w-6 h-6 animate-spin" />
-                    Generating...
-                  </>
-                ) : (
-                  <>
-                    <Sparkles className="w-6 h-6" />
-                    {t.generate}
-                  </>
-                )}
-              </button>
+                <option value="">Any Style</option>
+                <option value="luxury">👑 Luxury & Serious</option>
+                <option value="playful">🎉 Playful & Fun</option>
+                <option value="professional">💼 Professional & Trustworthy</option>
+                <option value="casual">🌿 Casual & Relaxed</option>
+              </select>
             </div>
           </div>
 
+          <div className="flex items-end">
+            <button
+              onClick={handleGenerate}
+              disabled={!selectedNiche || isGenerating}
+              className="w-full px-8 py-4 bg-gradient-to-r from-[#96bf48] to-[#5E8E3E] hover:from-[#5E8E3E] hover:to-[#4a7a35] disabled:bg-gray-400 text-white font-semibold rounded-xl transition-all shadow-lg hover:shadow-2xl hover:scale-105 flex items-center justify-center gap-3 animate-pulse-glow"
+            >
+              {isGenerating ? (
+                <>
+                  <RefreshCw className="w-6 h-6 animate-spin" />
+                  Generating...
+                </>
+              ) : (
+                <>
+                  <Sparkles className="w-6 h-6" />
+                  {t.generate}
+                </>
+              )}
+            </button>
+          </div>
+
           {/* Popular Niches */}
-          <div>
+          <div className="mt-8">
             <h3 className="text-sm font-medium mb-4 text-gray-700 dark:text-gray-300">
               {t.popularNiches}
             </h3>
