@@ -4,18 +4,16 @@ export const generateShopifyAffiliateLink = (
   niche: string,
   lang: 'it' | 'en'
 ): string => {
-  const affiliateId = process.env.NEXT_PUBLIC_SHOPIFY_AFFILIATE_ID || '';
-  const baseUrl = process.env.NEXT_PUBLIC_SHOPIFY_BASE_URL || 'https://www.shopify.com';
+  const affiliateLink = process.env.NEXT_PUBLIC_SHOPIFY_AFFILIATE_LINK || 'https://shopify.pxf.io/7316518-link';
   
   // Build the URL with tracking parameters
   const params = new URLSearchParams({
-    ref: affiliateId,
     subid1: niche, // Track which niche generated the conversion
     subid2: lang, // Track language
     keyword: storeName.toLowerCase() // Track the generated store name
   });
 
-  return `${baseUrl}/?${params.toString()}`;
+  return `${affiliateLink}?${params.toString()}`;
 };
 
 export const generateDomainCheckLink = (domainName: string): string => {
