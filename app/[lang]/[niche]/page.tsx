@@ -7,7 +7,8 @@ import { generateNames } from '@/lib/nameGenerator';
 import { generateShopifyAffiliateLink, generateDomainCheckLink } from '@/lib/affiliate';
 import { translations, Language } from '@/lib/i18n';
 import { trackNameGeneration, trackCTAClick, trackFavoriteAction, trackCopyToClipboard, trackSocialShare, trackAffiliateClick } from '@/lib/analytics';
-import { Sparkles, Globe, ShoppingCart, Heart, RefreshCw, ArrowLeft, Share2, Copy, Check } from 'lucide-react';
+import { Sparkles, Globe, ShoppingCart, Heart, RefreshCw, ArrowLeft, Share2, Copy, Check, Eye } from 'lucide-react';
+import StorePreview from '@/components/StorePreview';
 
 export default function NichePage() {
   const params = useParams();
@@ -20,6 +21,7 @@ export default function NichePage() {
   const [isGenerating, setIsGenerating] = useState(false);
   const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' } | null>(null);
   const [copiedName, setCopiedName] = useState<string | null>(null);
+  const [previewStore, setPreviewStore] = useState<{ name: string; niche: string; slogan: string } | null>(null);
 
   const niche = getNicheById(nicheId);
   const t = translations[lang];
@@ -197,6 +199,13 @@ export default function NichePage() {
                   </h3>
                   <div className="flex gap-2">
                     <button
+                      onClick={() => setPreviewStore({ name: item.name, niche: item.niche, slogan: item.slogan })}
+                      className="p-2 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 hover:bg-purple-100 hover:text-purple-600 transition-colors"
+                      title="Preview Store"
+                    >
+                      <Eye className="w-5 h-5" />
+                    </button>
+                    <button
                       onClick={() => copyToClipboard(item.name)}
                       className={`p-2 rounded-lg transition-colors ${
                         copiedName === item.name
@@ -293,6 +302,16 @@ export default function NichePage() {
           </p>
         </div>
       </footer>
+
+      {/* Store Preview Modal */}
+      {previewStore && (
+        <StorePreview
+          storeName={previewStore.name}
+          niche={previewStore.niche}
+          slogan={previewStore.slogan}
+          onClose={() => setPreviewStore(null)}
+        />
+      )}
     </div>
   );
 }
