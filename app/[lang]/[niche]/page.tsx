@@ -297,9 +297,11 @@ export default function NichePage() {
         <div className="max-w-6xl mx-auto px-4 text-center text-gray-600 dark:text-gray-400">
           <p className="mb-2">{t.ctaText}</p>
           <p className="text-sm mb-4">© 2026 SmartChoiceNames. All rights reserved.</p>
-          <p className="text-xs text-gray-500 dark:text-gray-500">
-            {t.affiliateDisclosure}
-          </p>
+          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#96bf48]/10 to-[#5E8E3E]/10 px-4 py-2 rounded-full border border-[#96bf48]/20">
+            <span className="text-xs text-[#5E8E3E] font-medium">
+              {t.affiliateDisclosure}
+            </span>
+          </div>
         </div>
       </footer>
 
