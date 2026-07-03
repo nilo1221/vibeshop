@@ -181,6 +181,26 @@ export default function Home() {
               </div>
             </div>
 
+            {/* Security Badges */}
+            <div className="flex flex-wrap justify-center gap-4 mb-10 animate-fade-in" style={{ animationDelay: '0.5s' }}>
+              <div className="flex items-center gap-2 bg-green-50 dark:bg-green-900/20 px-4 py-2 rounded-full border border-green-200 dark:border-green-800">
+                <span className="text-green-600 dark:text-green-400">🛡️</span>
+                <span className="text-xs font-medium text-green-700 dark:text-green-300">No Data Collection</span>
+              </div>
+              <div className="flex items-center gap-2 bg-blue-50 dark:bg-blue-900/20 px-4 py-2 rounded-full border border-blue-200 dark:border-blue-800">
+                <span className="text-blue-600 dark:text-blue-400">✓</span>
+                <span className="text-xs font-medium text-blue-700 dark:text-blue-300">SSL Encrypted</span>
+              </div>
+              <div className="flex items-center gap-2 bg-purple-50 dark:bg-purple-900/20 px-4 py-2 rounded-full border border-purple-200 dark:border-purple-800">
+                <span className="text-purple-600 dark:text-purple-400">🔐</span>
+                <span className="text-xs font-medium text-purple-700 dark:text-purple-300">Privacy First</span>
+              </div>
+              <div className="flex items-center gap-2 bg-orange-50 dark:bg-orange-900/20 px-4 py-2 rounded-full border border-orange-200 dark:border-orange-800">
+                <span className="text-orange-600 dark:text-orange-400">🎯</span>
+                <span className="text-xs font-medium text-orange-700 dark:text-orange-300">Official Shopify Partner</span>
+              </div>
+            </div>
+
             {/* Benefits */}
             <div className="grid md:grid-cols-3 gap-8 mb-10 max-w-5xl mx-auto">
               <div className="glass p-8 rounded-2xl border border-[#96bf48]/20 hover:border-[#96bf48]/40 transition-all hover:scale-105 animate-fade-in" style={{ animationDelay: '0.6s' }}>
@@ -399,6 +419,61 @@ export default function Home() {
           </div>
         </div>
 
+        {/* Next Steps Section */}
+        <div className="mb-16 animate-fade-in" style={{ animationDelay: '1.8s' }}>
+          <div className="glass p-12 rounded-3xl shadow-2xl">
+            <h2 className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
+              What's Next? Your Path to Success
+            </h2>
+            
+            <div className="grid md:grid-cols-4 gap-6">
+              <div className="text-center">
+                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r from-[#96bf48] to-[#5E8E3E] flex items-center justify-center text-white text-2xl font-bold shadow-lg">
+                  1
+                </div>
+                <h3 className="font-bold text-gray-900 dark:text-white mb-2">Choose Your Name</h3>
+                <p className="text-sm text-gray-600 dark:text-gray-400">Select the perfect name from our AI-generated suggestions</p>
+              </div>
+
+              <div className="text-center">
+                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r from-[#96bf48] to-[#5E8E3E] flex items-center justify-center text-white text-2xl font-bold shadow-lg">
+                  2
+                </div>
+                <h3 className="font-bold text-gray-900 dark:text-white mb-2">Check Domain</h3>
+                <p className="text-sm text-gray-600 dark:text-gray-400">Verify your domain availability and secure your brand</p>
+              </div>
+
+              <div className="text-center">
+                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r from-[#96bf48] to-[#5E8E3E] flex items-center justify-center text-white text-2xl font-bold shadow-lg">
+                  3
+                </div>
+                <h3 className="font-bold text-gray-900 dark:text-white mb-2">Open Shopify</h3>
+                <p className="text-sm text-gray-600 dark:text-gray-400">Start your free trial and build your dream store</p>
+              </div>
+
+              <div className="text-center">
+                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r from-[#96bf48] to-[#5E8E3E] flex items-center justify-center text-white text-2xl font-bold shadow-lg">
+                  4
+                </div>
+                <h3 className="font-bold text-gray-900 dark:text-white mb-2">Launch & Grow</h3>
+                <p className="text-sm text-gray-600 dark:text-gray-400">Add products, market your store, and start selling</p>
+              </div>
+            </div>
+
+            <div className="mt-12 text-center">
+              <a
+                href="https://shopify.pxf.io/c/7316518/3931322/13624"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#96bf48] to-[#5E8E3E] hover:from-[#5E8E3E] hover:to-[#4a7a35] text-white rounded-2xl text-lg font-semibold transition-all shadow-lg hover:shadow-2xl hover:scale-105 animate-pulse-glow"
+              >
+                <ShoppingCart className="w-6 h-6" />
+                Start Your Shopify Journey Today
+              </a>
+            </div>
+          </div>
+        </div>
+
         {/* Generated Names */}
         {generatedNames.length > 0 && (
           <div className="mb-8">
@@ -548,6 +623,11 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-4 text-center text-gray-600 dark:text-gray-400">
           <p className="mb-2">{t.ctaText}</p>
           <p className="text-sm mb-4">© 2026 SmartChoiceNames. All rights reserved.</p>
+          <div className="flex flex-wrap justify-center gap-4 mb-4">
+            <a href="#" className="text-sm hover:text-[#96bf48] transition-colors">Privacy Policy</a>
+            <a href="#" className="text-sm hover:text-[#96bf48] transition-colors">Terms of Service</a>
+            <a href="#" className="text-sm hover:text-[#96bf48] transition-colors">Contact</a>
+          </div>
           <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#96bf48]/10 to-[#5E8E3E]/10 px-4 py-2 rounded-full border border-[#96bf48]/20">
             <span className="text-xs text-[#5E8E3E] font-medium">
               {t.affiliateDisclosure}
