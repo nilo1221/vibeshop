@@ -25,18 +25,18 @@ export async function generateMetadata({ params }: NicheLayoutProps): Promise<Me
   const nicheName = nicheData[lang as keyof typeof nicheData] as string;
   
   return {
-    title: `${t.metaTitle} - ${nicheName}`,
-    description: `${t.metaDescription} ${lang === 'it' ? 'Per' : 'For'} ${nicheName.toLowerCase()}.`,
+    title: `${nicheName} Store Names | SmartChoiceGuide`,
+    description: `Generate creative ${nicheName} store names with SmartChoiceGuide. Find the perfect name for your ${nicheName} e-commerce business.`,
     openGraph: {
-      title: `${t.metaTitle} - ${nicheName}`,
-      description: `${t.metaDescription} ${lang === 'it' ? 'Per' : 'For'} ${nicheName.toLowerCase()}.`,
+      title: `${nicheName} Store Names | SmartChoiceGuide`,
+      description: `Generate creative ${nicheName} store names with SmartChoiceGuide. Find the perfect name for your ${nicheName} e-commerce business.`,
       type: 'website',
       locale: lang === 'it' ? 'it_IT' : 'en_US',
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${t.metaTitle} - ${nicheName}`,
-      description: `${t.metaDescription} ${lang === 'it' ? 'Per' : 'For'} ${nicheName.toLowerCase()}.`,
+      title: `${nicheName} Store Names | SmartChoiceGuide`,
+      description: `Generate creative ${nicheName} store names with SmartChoiceGuide. Find the perfect name for your ${nicheName} e-commerce business.`,
     },
   };
 }

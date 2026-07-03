@@ -114,8 +114,8 @@ export default function Home() {
       <header className="border-b border-gray-200 dark:border-gray-700 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm">
         <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center gap-2">
-            <img src="/images/logo/shopify.jpeg" alt="BrandNameCraft Logo" className="w-8 h-8 rounded-lg" />
-            <span className="font-semibold text-lg">BrandNameCraft</span>
+            <img src="/images/logo/shopify.jpeg" alt="SmartChoiceGuide Logo" className="w-8 h-8 rounded-lg" />
+            <span className="font-semibold text-lg">SmartChoiceGuide</span>
           </div>
           <div className="flex gap-2">
             <button
@@ -340,7 +340,7 @@ export default function Home() {
       <footer className="border-t border-gray-200 dark:border-gray-700 mt-12 py-8 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm">
         <div className="max-w-6xl mx-auto px-4 text-center text-gray-600 dark:text-gray-400">
           <p className="mb-2">{t.ctaText}</p>
-          <p className="text-sm mb-4">© 2026 BrandNameCraft. All rights reserved.</p>
+          <p className="text-sm mb-4">© 2026 SmartChoiceGuide. All rights reserved.</p>
           <p className="text-xs text-gray-500 dark:text-gray-500">
             {t.affiliateDisclosure}
           </p>

@@ -8,7 +8,7 @@ export type Language = keyof typeof languages;
 
 export const translations = {
   it: {
-    title: 'Generatore di Nomi per Negozi E-commerce',
+    title: 'SmartChoiceGuide | Generatore di Nomi per Negozi E-commerce',
     subtitle: 'Trova il nome perfetto per il tuo negozio online',
     placeholder: 'Inserisci la tua nicchia (es. gioielli, abbigliamento)',
     generate: 'Genera Nomi',
@@ -22,8 +22,8 @@ export const translations = {
     tryAnother: 'Genera altri nomi',
     selectNiche: 'Seleziona una nicchia',
     popularNiches: 'Nicchie Popolari',
-    metaTitle: 'Generatore di Nomi per Negozi | Trova il Nome Perfetto',
-    metaDescription: 'Genera nomi creativi per il tuo negozio e-commerce. Verifica disponibilità domini e apri il tuo shop su Shopify.',
+    metaTitle: 'SmartChoiceGuide | Generatore di Nomi per Negozi',
+    metaDescription: 'Genera nomi creativi per il tuo negozio e-commerce con SmartChoiceGuide. Verifica disponibilità domini e apri il tuo shop su Shopify.',
     ctaText: 'Il nome è pronto? Controlla subito la disponibilità su Shopify e parti oggi.',
     addedToFavorites: 'Aggiunto ai preferiti',
     removedFromFavorites: 'Rimosso dai preferiti',
@@ -33,7 +33,7 @@ export const translations = {
     affiliateDisclosure: 'Posso guadagnare una commissione quando ti registri a Shopify tramite il mio link.'
   },
   en: {
-    title: 'E-commerce Store Name Generator',
+    title: 'SmartChoiceGuide | E-commerce Store Name Generator',
     subtitle: 'Find the perfect name for your online store',
     placeholder: 'Enter your niche (e.g., jewelry, clothing)',
     generate: 'Generate Names',
@@ -47,8 +47,8 @@ export const translations = {
     tryAnother: 'Generate more names',
     selectNiche: 'Select a niche',
     popularNiches: 'Popular Niches',
-    metaTitle: 'Store Name Generator | Find the Perfect Name',
-    metaDescription: 'Generate creative names for your e-commerce store. Check domain availability and open your shop on Shopify.',
+    metaTitle: 'SmartChoiceGuide | Store Name Generator',
+    metaDescription: 'Generate creative names for your e-commerce store with SmartChoiceGuide. Check domain availability and open your shop on Shopify.',
     ctaText: 'Name ready? Check availability on Shopify and start today.',
     addedToFavorites: 'Added to favorites',
     removedFromFavorites: 'Removed from favorites',
