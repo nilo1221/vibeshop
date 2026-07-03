@@ -94,7 +94,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
+    <div className="min-h-screen bg-gradient-to-br from-[#f5f5f5] to-[#f2f7fa] dark:from-gray-900 dark:to-gray-800">
       {/* Toast Notification */}
       {toast && (
         <div className={`fixed top-4 right-4 px-6 py-3 rounded-lg shadow-lg z-50 ${
@@ -114,13 +114,13 @@ export default function Home() {
           <div className="flex gap-2">
             <button
               onClick={() => setLang('it')}
-              className={`px-3 py-1 rounded text-sm ${lang === 'it' ? 'bg-blue-600 text-white' : 'bg-gray-200 dark:bg-gray-700'}`}
+              className={`px-3 py-1 rounded text-sm ${lang === 'it' ? 'bg-[#96bf48] text-white' : 'bg-gray-200 dark:bg-gray-700'}`}
             >
               IT
             </button>
             <button
               onClick={() => setLang('en')}
-              className={`px-3 py-1 rounded text-sm ${lang === 'en' ? 'bg-blue-600 text-white' : 'bg-gray-200 dark:bg-gray-700'}`}
+              className={`px-3 py-1 rounded text-sm ${lang === 'en' ? 'bg-[#96bf48] text-white' : 'bg-gray-200 dark:bg-gray-700'}`}
             >
               EN
             </button>
@@ -163,7 +163,7 @@ export default function Home() {
               <button
                 onClick={handleGenerate}
                 disabled={!selectedNiche || isGenerating}
-                className="w-full px-6 py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white font-semibold rounded-lg transition-colors flex items-center justify-center gap-2"
+                className="w-full px-6 py-3 bg-[#96bf48] hover:bg-[#5E8E3E] disabled:bg-gray-400 text-white font-semibold rounded-lg transition-colors flex items-center justify-center gap-2"
               >
                 {isGenerating ? (
                   <>
@@ -192,7 +192,7 @@ export default function Home() {
                   onClick={() => setSelectedNiche(niche.id)}
                   className={`px-4 py-2 rounded-full text-sm transition-colors ${
                     selectedNiche === niche.id
-                      ? 'bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 border-2 border-blue-500'
+                      ? 'bg-[#96bf48]/10 dark:bg-[#96bf48]/20 text-[#5E8E3E] dark:text-[#96bf48] border-2 border-[#96bf48]'
                       : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border-2 border-transparent hover:border-gray-300'
                   }`}
                 >
@@ -277,7 +277,7 @@ export default function Home() {
                       href={generateShopifyAffiliateLink(item.name, item.niche, lang, 'home')}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg text-sm font-medium transition-colors flex items-center justify-center gap-2"
+                      className="flex-1 px-4 py-2 bg-[#96bf48] hover:bg-[#5E8E3E] text-white rounded-lg text-sm font-medium transition-colors flex items-center justify-center gap-2"
                     >
                       <ShoppingCart className="w-4 h-4" />
                       {t.openShop}
