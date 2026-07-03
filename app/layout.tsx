@@ -25,6 +25,15 @@ export default function RootLayout({
           description="Generate creative names for your e-commerce store with SmartChoiceNames. Check domain availability and open your shop on Shopify."
           url="https://vibeshop-chi.vercel.app"
         />
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-1H9PF5D2RC"></script>
+        <script dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-1H9PF5D2RC');
+          `
+        }} />
       </head>
       <body className={inter.className}>
         <GoogleAnalytics />
